@@ -1,4 +1,4 @@
-#Austin Derby
+# Austin Derby and Diego Medina
 
 
 def encoder(password):
@@ -43,6 +43,12 @@ def encoder(password):
                     new_password += "9"
     return new_password
 
+def decode(new_password):
+    decoded_password = ""
+    for digit in str(new_password):  # Creates loop to go through digits in the string
+        decoded_digit = str((int(digit) - 3) % 10)  # - three to that digit then takes remainder adds encoded_message
+        decoded_password += decoded_digit  # Creates the string for all the digits
+    return decoded_password
 
 
 if __name__ == "__main__":
@@ -54,7 +60,7 @@ if __name__ == "__main__":
         print()
         print("1. Encode")
         print("2. Decode")
-        print("3. Quite")
+        print("3. Quit")
         print()
         choice = int(input("Please enter an option: "))
 
@@ -65,7 +71,7 @@ if __name__ == "__main__":
             print()
 
         elif choice == 2:
-            decoded_password = decoder(new_password)
+            decoded_password = decode(new_password)
             print(f"The encoded password is {new_password}, and the original password is {decoded_password}")
             print()
 
